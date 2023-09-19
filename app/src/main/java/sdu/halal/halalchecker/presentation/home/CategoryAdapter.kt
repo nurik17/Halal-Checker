@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import sdu.halal.halalchecker.presentation.data.ProductCategory
 import sdu.halal.halalchecker.databinding.MainItemCategoryBinding
 
+
 class CategoryAdapter : ListAdapter<ProductCategory, CategoryAdapter.ViewHolder>(CategoryDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -18,11 +19,10 @@ class CategoryAdapter : ListAdapter<ProductCategory, CategoryAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position < 3) {
-            val item = getItem(position)
-            holder.bind(item)
-        }
+        val item = getItem(position)
+        holder.bind(item)
     }
+
 
     class ViewHolder(private val binding: MainItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
@@ -43,9 +43,5 @@ class CategoryAdapter : ListAdapter<ProductCategory, CategoryAdapter.ViewHolder>
         override fun areContentsTheSame(oldItem: ProductCategory, newItem: ProductCategory): Boolean {
             return oldItem == newItem
         }
-    }
-
-    override fun getItemCount(): Int {
-        return minOf(super.getItemCount(),3)
     }
 }
