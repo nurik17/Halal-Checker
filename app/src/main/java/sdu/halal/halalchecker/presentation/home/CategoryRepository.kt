@@ -10,15 +10,26 @@ class CategoryRepository{
         val listCategory = ArrayList<ProductCategory>()
         val category1 = ProductCategory("Milk",5,R.drawable.category_milk_image)
         val category2 = ProductCategory("Oil",8,R.drawable.category_oil_image)
-        val category4 = ProductCategory("Bread",10,R.drawable.category_bread_image)
-        val category3 = ProductCategory("Cheese",6,R.drawable.category_cheese_image)
+        val category3 = ProductCategory("Bread",10,R.drawable.category_bread_image)
+        val category4 = ProductCategory("Cheese",6,R.drawable.category_cheese_image)
         val category5 = ProductCategory("Meat",7,R.drawable.category_milk_image)
+        val category6 = ProductCategory("Meat",7,R.drawable.category_milk_image)
+        val category7 = ProductCategory("Oil",8,R.drawable.category_oil_image)
+        val category8 = ProductCategory("Bread",10,R.drawable.category_bread_image)
+        val category9 = ProductCategory("Cheese",6,R.drawable.category_cheese_image)
+        val category10 = ProductCategory("Cheese",6,R.drawable.category_cheese_image)
+
 
         listCategory.add(category1)
         listCategory.add(category2)
         listCategory.add(category3)
         listCategory.add(category4)
         listCategory.add(category5)
+        listCategory.add(category6)
+        listCategory.add(category7)
+        listCategory.add(category8)
+        listCategory.add(category9)
+        listCategory.add(category10)
 
         return listCategory
     }

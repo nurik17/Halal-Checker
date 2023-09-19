@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="sdu.halal.halalchecker.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/scannerFragment"
         android:name="sdu.halal.halalchecker.presentation.ScannerFragment"
@@ -20,4 +24,9 @@
         android:name="sdu.halal.halalchecker.presentation.ArchiveFragment"
         android:label="fragment_archive"
         tools:layout="@layout/fragment_archive" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="sdu.halal.halalchecker.presentation.home.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" />
 </navigation>

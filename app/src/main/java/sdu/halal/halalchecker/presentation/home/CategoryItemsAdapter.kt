@@ -11,16 +11,24 @@ import sdu.halal.halalchecker.presentation.data.ProductCategory
 import sdu.halal.halalchecker.databinding.MainItemCategoryBinding
 
 
-class CategoryAdapter : ListAdapter<ProductCategory, CategoryAdapter.ViewHolder>(CategoryDiffCallback()) {
+class CategoryItemsAdapter : ListAdapter<ProductCategory, CategoryItemsAdapter.ViewHolder>(CategoryDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = MainItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+    private var itemClickListener: ((ProductCategory) -> Unit)? = null
+
+    fun setItemClickListener(listener :(ProductCategory) -> Unit){
+        itemClickListener = listener
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            itemClickListener?.invoke(item)
+        }
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = MainItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
 

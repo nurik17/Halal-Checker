@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="12dp"
+    tools:context=".presentation.home.category.CategoryFragment">
+
+
+    <ImageView
+        android:id="@+id/image_arrow_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_left"
+        android:padding="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/search_background"/>
+
+    <TextView
+        android:id="@+id/category_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        app:layout_constraintStart_toEndOf="@id/image_arrow_back"
+        app:layout_constraintTop_toTopOf="@id/image_search"
+        app:layout_constraintEnd_toStartOf="@id/image_search"
+        android:fontFamily="@font/inter_600"
+        android:textSize="23sp"/>
+
+    <ImageView
+        android:id="@+id/image_search"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_search"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/image_arrow_back"
+        android:background="@drawable/search_background"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclet_fragment_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/category_main_text"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="?attr/actionBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/main_item_category" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

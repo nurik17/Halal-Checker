@@ -60,4 +60,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
 
 
+    //scan Barcode
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
+
 }

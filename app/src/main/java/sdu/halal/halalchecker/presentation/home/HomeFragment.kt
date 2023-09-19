@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import sdu.halal.halalchecker.R
 import sdu.halal.halalchecker.databinding.FragmentHomeBinding
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
         CategoryRepository()
     }
     private lateinit var viewModel: HomeViewModel
-    private lateinit var categoryAdapter : CategoryAdapter
+    private lateinit var categoryAdapter : CategoryItemsAdapter
     private lateinit var additiveAdapter: AdditiveAdapter
 
     override fun onCreateView(
@@ -41,28 +42,54 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         halalSpanText()
 
-        categoryAdapter = CategoryAdapter()
+
+        categoryAdapter = CategoryItemsAdapter()
         binding.recyclerCategory.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.HORIZONTAL,
             false)
         binding.recyclerCategory.adapter = categoryAdapter
 
+
+        categoryAdapter.setItemClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
+        }
+
+        binding.textCategoryAll.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
+        }
+
+
+
+        categoryItemsRecycler()
+        additiveItemsRecycler()
+        observeCategoryData()
+        observeAdditiveData()
+
+    }
+
+    private fun categoryItemsRecycler(){
+
+    }
+    private fun additiveItemsRecycler(){
         additiveAdapter = AdditiveAdapter()
         binding.recyclerAdditivies.layoutManager = LinearLayoutManager(requireContext(),
-        LinearLayoutManager.HORIZONTAL,
+            LinearLayoutManager.HORIZONTAL,
             false)
         binding.recyclerAdditivies.adapter = additiveAdapter
+    }
 
+    private fun observeCategoryData(){
         viewModel.categoryData.observe(viewLifecycleOwner) { categoryData ->
             val subList = categoryData.take(MAX_CATEGORY_ITEMS_COUNT)
             categoryAdapter.submitList(subList)
         }
+    }
+    private fun observeAdditiveData(){
         viewModel.additiveData.observe(viewLifecycleOwner) { additiveData ->
             val subList = additiveData.take(MAX_ADDITIVE_ITEMS_COUNT)
             additiveAdapter.submitList(subList)
         }
     }
-
     private fun halalSpanText(){
         val halalText = getString(R.string.halal_checker)
         val spannableText = SpannableString(halalText)
