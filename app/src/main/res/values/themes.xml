@@ -1,9 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.HalalChecker" parent="Theme.Material3.DayNight.NoActionBar">
-
-
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="Theme.HalalChecker" parent="Base.Theme.HalalChecker" />
+
+    <style name="SearchViewStyle">
+        <item name="android:background">@drawable/background_searchview</item>
+    </style>
 </resources>

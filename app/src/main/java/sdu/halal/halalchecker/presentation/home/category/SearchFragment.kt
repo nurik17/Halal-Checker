@@ -1,4 +1,4 @@
-package sdu.halal.halalchecker.presentation
+package sdu.halal.halalchecker.presentation.home.category
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,14 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import sdu.halal.halalchecker.R
 
-class ScannerFragment : Fragment() {
+class SearchFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scanner, container, false)
+        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
 }

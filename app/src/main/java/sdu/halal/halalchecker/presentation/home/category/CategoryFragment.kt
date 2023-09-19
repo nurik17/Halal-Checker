@@ -49,5 +49,6 @@ class CategoryFragment : Fragment() {
         viewModel.categoryData.observe(viewLifecycleOwner){dataCategory->
             adapter.submitList(dataCategory)
         }
+
     }
 }

@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/scannerFragment"
-        android:name="sdu.halal.halalchecker.presentation.ScannerFragment"
+        android:name="sdu.halal.halalchecker.presentation.scanner.ScannerFragment"
         android:label="fragment_scanner"
         tools:layout="@layout/fragment_scanner" />
     <fragment
