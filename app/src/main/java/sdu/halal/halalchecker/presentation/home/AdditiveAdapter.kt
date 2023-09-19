@@ -17,10 +17,8 @@ class AdditiveAdapter : ListAdapter<Additivies, AdditiveAdapter.ViewHolder>(Addi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position < 5) {
-            val item = getItem(position)
-            holder.bind(item)
-        }
+        val item = getItem(position)
+        holder.bind(item)
     }
 
     inner class ViewHolder(private val binding: MainAdditiviesItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -40,7 +38,5 @@ class AdditiveAdapter : ListAdapter<Additivies, AdditiveAdapter.ViewHolder>(Addi
         }
     }
 
-    override fun getItemCount(): Int {
-        return minOf(super.getItemCount(),5)
-    }
+
 }

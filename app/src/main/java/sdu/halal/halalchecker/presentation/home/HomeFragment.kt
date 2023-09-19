@@ -13,12 +13,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import sdu.halal.halalchecker.R
 import sdu.halal.halalchecker.databinding.FragmentHomeBinding
 
-
+private const val MAX_CATEGORY_ITEMS_COUNT = 5
+private const val MAX_ADDITIVE_ITEMS_COUNT = 7
 class HomeFragment : Fragment() {
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private val repository : CategoryRepository by lazy {
+        CategoryRepository()
+    }
     private lateinit var viewModel: HomeViewModel
     private lateinit var categoryAdapter : CategoryAdapter
     private lateinit var additiveAdapter: AdditiveAdapter
@@ -28,7 +32,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
-        val repository = CategoryRepository()
         val viewModelFactory = HomeViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory)[HomeViewModel::class.java]
         return binding.root
@@ -51,10 +54,12 @@ class HomeFragment : Fragment() {
         binding.recyclerAdditivies.adapter = additiveAdapter
 
         viewModel.categoryData.observe(viewLifecycleOwner) { categoryData ->
-            categoryAdapter.submitList(categoryData)
+            val subList = categoryData.take(MAX_CATEGORY_ITEMS_COUNT)
+            categoryAdapter.submitList(subList)
         }
         viewModel.additiveData.observe(viewLifecycleOwner) { additiveData ->
-            additiveAdapter.submitList(additiveData)
+            val subList = additiveData.take(MAX_ADDITIVE_ITEMS_COUNT)
+            additiveAdapter.submitList(subList)
         }
     }
 

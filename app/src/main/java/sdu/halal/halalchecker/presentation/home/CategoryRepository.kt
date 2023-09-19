@@ -28,7 +28,7 @@ class CategoryRepository{
         val additive1 = Additivies("107",R.drawable.additivies_tem_background)
         val additive2 = Additivies("201",R.drawable.additivies_tem_background_red)
         val additive3 = Additivies("103",R.drawable.additivies_tem_background_yellow)
-        val additive4 = Additivies("105",R.drawable.additivies_tem_background)
+        val additive4 = Additivies("109",R.drawable.additivies_tem_background)
         val additive5 = Additivies("105",R.drawable.additivies_tem_background)
         val additive6 = Additivies("103",R.drawable.additivies_tem_background_yellow)
         val additive7 = Additivies("201",R.drawable.additivies_tem_background_red)
