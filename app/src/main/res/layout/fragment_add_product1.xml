@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.scanner.AddProductFragment1">
+
+    <ImageView
+        android:id="@+id/image_arrow_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_left"
+        android:padding="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/search_background"/>
+
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_arrow_back"
+        android:layout_marginTop="15dp"
+        android:max="100"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progress="33"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/progress_background"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/addProduct_main_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product name and brand"
+        android:textSize="26sp"
+        android:fontFamily="@font/inter_600"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/name_product_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name product"
+        android:textSize="16sp"
+        android:fontFamily="@font/inter_400"
+        android:textColor="#454745"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addProduct_main_text"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/name_product_editText"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/name_product_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/name_brand_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name brand"
+        android:textSize="16sp"
+        android:fontFamily="@font/inter_400"
+        android:textColor="#454745"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_product_editText"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/name_brand_editText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:padding="5dp"
+
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintTop_toBottomOf="@id/name_brand_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#9FE870"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="30dp"
+        android:text="Next step"
+        android:fontFamily="@font/inter_600"
+        android:textSize="14sp"
+        android:textColor="@color/black"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,5 +28,50 @@
         android:id="@+id/categoryFragment"
         android:name="sdu.halal.halalchecker.presentation.home.category.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_infoProductFragment"
+            app:destination="@id/infoProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoProductFragment"
+        android:name="sdu.halal.halalchecker.presentation.scanner.InfoProductFragment"
+        android:label="fragment_info_product"
+        tools:layout="@layout/fragment_info_product" >
+        <action
+            android:id="@+id/action_infoProductFragment_to_addProductFragment1"
+            app:destination="@id/addProductFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment1"
+        android:name="sdu.halal.halalchecker.presentation.scanner.AddProductFragment1"
+        android:label="fragment_add_product1"
+        tools:layout="@layout/fragment_add_product1" >
+        <action
+            android:id="@+id/action_addProductFragment1_to_addProductFragment2"
+            app:destination="@id/addProductFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment2"
+        android:name="sdu.halal.halalchecker.presentation.scanner.AddProductFragment2"
+        android:label="fragment_add_product2"
+        tools:layout="@layout/fragment_add_product2" >
+        <action
+            android:id="@+id/action_addProductFragment2_to_addProductFragment3"
+            app:destination="@id/addProductFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment3"
+        android:name="sdu.halal.halalchecker.presentation.scanner.AddProductFragment3"
+        android:label="fragment_add_product3"
+        tools:layout="@layout/fragment_add_product3" >
+        <action
+            android:id="@+id/action_addProductFragment3_to_failureFragment"
+            app:destination="@id/failureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/failureFragment"
+        android:name="sdu.halal.halalchecker.presentation.scanner.FailureFragment"
+        android:label="fragment_finish_add_product"
+        tools:layout="@layout/fragment_finish_add_product" />
 </navigation>

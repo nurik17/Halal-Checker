@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import sdu.halal.halalchecker.R
+import sdu.halal.halalchecker.presentation.home.category.CategoryViewModel
 import sdu.halal.halalchecker.databinding.FragmentCategoryBinding
 import sdu.halal.halalchecker.presentation.home.CategoryRepository
-import sdu.halal.halalchecker.presentation.home.HomeViewModel
+import sdu.halal.halalchecker.presentation.home.HomeViewModelFactory
+import sdu.halal.halalchecker.presentation.home.MainViewModel
 
 
 class CategoryFragment : Fragment() {
@@ -18,8 +21,8 @@ class CategoryFragment : Fragment() {
     private var _binding : FragmentCategoryBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: HomeViewModel
-    private lateinit var adapter : CategoryPageAdapter
+    private lateinit var viewModel: MainViewModel
+    private lateinit var categoryPageAdapter : CategoryPageAdapter
     private val repository by lazy {
         CategoryRepository()
     }
@@ -29,8 +32,8 @@ class CategoryFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
         _binding = FragmentCategoryBinding.inflate(inflater,container,false)
 
-        val viewModelFactory = CategoryPageViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory)[HomeViewModel::class.java]
+        val viewModelFactory = HomeViewModelFactory(repository)
+        viewModel = ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
 
         return binding.root
     }
@@ -42,13 +45,15 @@ class CategoryFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        adapter = CategoryPageAdapter()
+        categoryPageAdapter = CategoryPageAdapter()
         binding.recycletFragmentCategory.layoutManager = GridLayoutManager(requireContext(),2)
-        binding.recycletFragmentCategory.adapter = adapter
+        binding.recycletFragmentCategory.adapter = categoryPageAdapter
 
         viewModel.categoryData.observe(viewLifecycleOwner){dataCategory->
-            adapter.submitList(dataCategory)
+            categoryPageAdapter.submitList(dataCategory)
         }
-
+        categoryPageAdapter.setItemClickListener {
+            findNavController().navigate(R.id.action_categoryFragment_to_infoProductFragment)
+        }
     }
 }

@@ -3,11 +3,10 @@ package sdu.halal.halalchecker.presentation.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide.init
 import sdu.halal.halalchecker.presentation.data.Additivies
 import sdu.halal.halalchecker.presentation.data.ProductCategory
 
-class HomeViewModel(repository: CategoryRepository) : ViewModel() {
+class MainViewModel(repository: CategoryRepository) : ViewModel() {
 
     private val _categoryData = MutableLiveData<List<ProductCategory>>()
     val categoryData: LiveData<List<ProductCategory>> = _categoryData

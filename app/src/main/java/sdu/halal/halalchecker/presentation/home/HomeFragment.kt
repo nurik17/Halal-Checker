@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import sdu.halal.halalchecker.R
+import sdu.halal.halalchecker.presentation.home.MainViewModel
 import sdu.halal.halalchecker.databinding.FragmentHomeBinding
 
 private const val MAX_CATEGORY_ITEMS_COUNT = 5
@@ -24,8 +25,8 @@ class HomeFragment : Fragment() {
     private val repository : CategoryRepository by lazy {
         CategoryRepository()
     }
-    private lateinit var viewModel: HomeViewModel
-    private lateinit var categoryAdapter : CategoryItemsAdapter
+    private lateinit var viewModel: MainViewModel
+    private lateinit var categoryItemsAdapter : CategoryItemsAdapter
     private lateinit var additiveAdapter: AdditiveAdapter
 
     override fun onCreateView(
@@ -34,7 +35,7 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
         val viewModelFactory = HomeViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory)[HomeViewModel::class.java]
+        viewModel = ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
         return binding.root
     }
 
@@ -43,14 +44,14 @@ class HomeFragment : Fragment() {
         halalSpanText()
 
 
-        categoryAdapter = CategoryItemsAdapter()
+        categoryItemsAdapter = CategoryItemsAdapter()
         binding.recyclerCategory.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.HORIZONTAL,
             false)
-        binding.recyclerCategory.adapter = categoryAdapter
+        binding.recyclerCategory.adapter = categoryItemsAdapter
 
 
-        categoryAdapter.setItemClickListener {
+        categoryItemsAdapter.setItemClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
         }
 
@@ -81,7 +82,7 @@ class HomeFragment : Fragment() {
     private fun observeCategoryData(){
         viewModel.categoryData.observe(viewLifecycleOwner) { categoryData ->
             val subList = categoryData.take(MAX_CATEGORY_ITEMS_COUNT)
-            categoryAdapter.submitList(subList)
+            categoryItemsAdapter.submitList(subList)
         }
     }
     private fun observeAdditiveData(){
